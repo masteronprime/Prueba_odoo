@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+            <record id="view_template_product_label" model="ir.ui.view">
+                <field name="name">product.template.product.label</field>
+                <field name="model">product.template</field>
+                <field name="inherit_id" ref="product.product_template_form_view"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//page[@name='invoicing']" position="after">
+                            <page name="Etiqueta" string="Códigos alternativos">
+                                <group>
+                                    <field name="label_ids" widget="many2many_tags">
+                                        <tree string="Etiquetas productos">
+                                            <field name="name"/>
+                                            <field name="description"/>
+                                        </tree>
+                                        <form string="Etiquetas productos">
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="description"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                    </xpath>
+                </field>
+            </record>
+    </data>
+</odoo>
+

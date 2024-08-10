@@ -1,0 +1,46 @@
+<odoo>
+    <template id="report_product_details">
+            <t t-call="web.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2>Detalles del Producto</h2>
+                            <table>
+                                <tr>
+                                    <td><strong>Nombre del producto:</strong></td>
+                                    <td><span t-if="doc_id.name" t-field="doc_id.name"/>
+                                        <span t-else="">N/A</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Descripción breve:</strong></td>
+                                    <td><span t-if="doc_id.description_short" t-field="doc_id.description_short"/>
+                                        <span t-else="">N/A</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Código del producto:</strong></td>
+                                    <td><span t-if="doc_id.default_code" t-field="doc_id.default_code"/>
+                                        <span t-else="">N/A</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Precio unitario:</strong></td>
+                                    <td><span t-if="doc_id.list_price" t-field="doc_id.list_price"/>
+                                        <span t-else="">N/A</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Imagen del producto:</strong></td>
+                                    <td>
+                                        <t t-if="doc_id.image_1920">
+                                            <img t-att-src="'data:image/png;base64,%s' % doc_id.image_1920.decode('utf-8')"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span>No Image</span>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+</odoo>
